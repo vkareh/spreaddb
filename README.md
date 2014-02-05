@@ -44,4 +44,5 @@ To do
 * Create basic access-control layer
 * Add support for .ods files
 * Add support for multiple worksheets
+* Proper error handling
 * Tests!
