@@ -38,7 +38,8 @@ spreadsheet is a unique ID.
 To do
 -----
 * Add internal Lucene-style indexing and corresponding `POST` endpoint
-* Allow `PUT`, `POST`, `PATCH`, `DELETE` for spreadsheet files
+* Allow `PUT`, `DELETE` for spreadsheet files
+* Allow `PUT`, `POST`, `DELETE` for spreadsheet rows
 * Allow `GET`, `POST` for config file
 * Create bundled web-based UI
 * Create basic access-control layer
