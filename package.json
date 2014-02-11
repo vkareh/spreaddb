@@ -2,7 +2,13 @@
   "name": "spreaddb",
   "version": "0.0.1",
   "description": "Spreadsheet-oriented database with RESTful API.",
-  "keywords": ["spreadsheet", "database", "csv", "xls", "xlsx"],
+  "keywords": [
+    "spreadsheet",
+    "database",
+    "csv",
+    "xls",
+    "xlsx"
+  ],
   "license": "MIT",
   "author": {
     "name": "Victor Kareh",
@@ -14,7 +20,7 @@
     "url": "http://github.com/vkareh/spreaddb.git"
   },
   "scripts": {
-    "start": "node ./spreaddb.js"
+    "start": "node spreaddb.js"
   },
   "dependencies": {
     "csv": "0.3.x",
@@ -24,5 +30,9 @@
   },
   "engines": {
     "node": "~0.10"
+  },
+  "devDependencies": {
+    "gulp": "~3.5.2",
+    "gulp-jshint": "~1.4.0"
   }
 }
