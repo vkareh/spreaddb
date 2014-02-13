@@ -26,7 +26,8 @@
     "csv": "0.3.x",
     "express": "3.4.x",
     "underscore": "1.5.x",
-    "xlsx": "0.4.x"
+    "xlsx": "0.4.x",
+    "xlsx-writer": "0.0.9"
   },
   "engines": {
     "node": "~0.10"
