@@ -18,7 +18,7 @@ welcome message.
 
 There are several service endpoints:
 
-* `/_all` returns an array of all spreadsheet files. It takes one optional query
+* `/_all` Returns a list of all spreadsheets tracked by this server. It takes one optional query
 string: `?stats=true`.
 * `/<filename>` requesting the full filename (extension included) will return
 all data for that spreadsheet file, in JSON format. It also takes the following
@@ -38,12 +38,11 @@ spreadsheet is a unique ID.
 To do
 -----
 * Add internal Lucene-style indexing and corresponding `POST` endpoint
-* Allow `PUT`, `DELETE` for spreadsheet files
-* Allow `PUT`, `POST`, `DELETE` for spreadsheet rows
-* Allow `GET`, `POST` for config file
 * Create bundled web-based UI
 * Create basic access-control layer
 * Add support for .ods files
 * Add support for multiple worksheets
+* Add support for config file API
 * Proper error handling
 * Tests!
+* API documentation
