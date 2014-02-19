@@ -1,8 +1,10 @@
 var gulp = require('gulp'),
-    jshint = require('gulp-jshint');
+    jshint = require('gulp-jshint'),
+    mocha = require('gulp-mocha');
 
 var paths = {
-    js: ['spreaddb.js', 'lib/**/*.js']
+    js: ['spreaddb.js', 'lib/**/*.js'],
+    test: ['test/*.js']
 };
 
 gulp.task('lint', function() {
@@ -11,8 +13,14 @@ gulp.task('lint', function() {
         .pipe(jshint.reporter('default'));
 });
 
-gulp.task('watch', function() {
-    gulp.watch(paths.js, ['lint']);
+gulp.task('test', function () {
+    gulp.src(paths.test)
+        .pipe(mocha());
 });
 
-gulp.task('default', ['watch']);
+gulp.task('watch', function() {
+    gulp.watch(paths.js, ['lint', 'test']);
+    gulp.watch(paths.test, ['test']);
+});
+
+gulp.task('default', ['lint', 'test', 'watch']);
