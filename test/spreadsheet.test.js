@@ -29,6 +29,44 @@ describe('Spreadsheet', function() {
         });
     });
 
+    describe('#exists()', function() {
+        it('should detemine that the file exists', function(done) {
+            var spreadsheet = new Spreadsheet(filename);
+            spreadsheet.exists(function(err, exists) {
+                expect(err).to.be.null;
+                expect(exists).to.be.true;
+                done();
+            });
+        });
+        it('should detemine that the file does not exists', function(done) {
+            var spreadsheet = new Spreadsheet('false.csv');
+            spreadsheet.exists(function(err, exists) {
+                expect(err).to.be.null;
+                expect(exists).to.be.false;
+                done();
+            });
+        });
+    });
+
+    describe('#has()', function() {
+        it('should determine that a row exists', function(done) {
+            var spreadsheet = new Spreadsheet(filename);
+            spreadsheet.has('Alice', function(err, has) {
+                expect(err).to.be.null;
+                expect(has).to.be.true;
+                done();
+            });
+        });
+        it('should determine that a row does not exists', function(done) {
+            var spreadsheet = new Spreadsheet(filename);
+            spreadsheet.has('Adam', function(err, has) {
+                expect(err).to.be.null;
+                expect(has).to.be.false;
+                done();
+            });
+        });
+    });
+
     describe('#read()', function() {
         it('should return file contents', function(done) {
             var spreadsheet = new Spreadsheet(filename);
