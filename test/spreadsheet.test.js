@@ -3,7 +3,7 @@ var expect = require("chai").expect,
     path = require('path'),
     Spreadsheet = require("../lib/spreadsheet.js").Spreadsheet;
 
-var filename = path.join(__dirname, 'spreadsheet.csv');
+var filename = 'spreadsheet.csv';
 
 describe('Spreadsheet', function() {
     describe('#__constructor', function() {
@@ -25,7 +25,7 @@ describe('Spreadsheet', function() {
             spreadsheet.create(data, function(err, status) {
                 expect(err).to.be.null;
                 expect(status).to.have.property('ok');
-                fs.exists(filename, function(exists) {
+                fs.exists(path.join(__dirname, filename), function(exists) {
                     expect(exists).to.be.true;
                     done();
                 });

@@ -1,10 +1,8 @@
 var expect = require("chai").expect,
-    fs = require('fs'),
-    path = require('path'),
     Spreadsheet = require("../lib/spreadsheet.js").Spreadsheet,
     Row = require("../lib/row.js").Row;
 
-var filename = path.join(__dirname, 'rows.csv');
+var filename = 'rows.csv';
 var spreadsheet = new Spreadsheet(filename);
 
 describe('Row', function() {
@@ -82,7 +80,7 @@ describe('Row', function() {
 
     describe('cleanup', function() {
         it('should remove test file', function() {
-            fs.unlink(filename);
+            require('fs').unlink(require('path').join(__dirname, filename));
         });
     });
 });
