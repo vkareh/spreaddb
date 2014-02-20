@@ -1,4 +1,5 @@
 var expect = require("chai").expect,
+    fs = require('fs'),
     path = require('path'),
     Spreadsheet = require("../lib/spreadsheet.js").Spreadsheet;
 
@@ -24,7 +25,10 @@ describe('Spreadsheet', function() {
             spreadsheet.create(data, function(err, status) {
                 expect(err).to.be.null;
                 expect(status).to.have.property('ok');
-                done();
+                fs.exists(filename, function(exists) {
+                    expect(exists).to.be.true;
+                    done();
+                });
             });
         });
     });
@@ -67,6 +71,18 @@ describe('Spreadsheet', function() {
         });
     });
 
+    describe('#stats()', function() {
+        it('should return file stats', function(done) {
+            var spreadsheet = new Spreadsheet(filename);
+            spreadsheet.stats(function(err, stats) {
+                expect(err).to.be.null;
+                expect(stats).to.have.property('filename');
+                expect(stats.records).to.equal(3);
+                done();
+            });
+        });
+    });
+
     describe('#read()', function() {
         it('should return file contents', function(done) {
             var spreadsheet = new Spreadsheet(filename);
@@ -78,6 +94,37 @@ describe('Spreadsheet', function() {
                 expect(data[0].email).to.equal('alice@example.com');
                 expect(data[0].phone).to.equal('555-1234');
                 done();
+            });
+        });
+    });
+
+    describe('#remove()', function() {
+        it('should remove a row', function(done) {
+            var spreadsheet = new Spreadsheet(filename);
+            spreadsheet.remove('Alice', function(err, status) {
+                expect(err).to.be.null;
+                expect(status).to.have.property('ok');
+                spreadsheet.has('Alice', function(err, has) {
+                    expect(err).to.be.null;
+                    expect(has).to.be.false;
+                    done();
+                });
+            });
+        });
+    });
+
+    describe('#add()', function() {
+        it('should add a row', function(done) {
+            var spreadsheet = new Spreadsheet(filename);
+            var rows = [{name: 'Dave', email: 'dave@example.com', phone: '555-4567'}];
+            spreadsheet.add(rows, function(err, status) {
+                expect(err).to.be.null;
+                expect(status).to.have.property('ok');
+                spreadsheet.has('Dave', function(err, has) {
+                    expect(err).to.be.null;
+                    expect(has).to.be.true;
+                    done();
+                });
             });
         });
     });
