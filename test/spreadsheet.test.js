@@ -3,7 +3,7 @@ var expect = require("chai").expect,
     path = require('path'),
     Spreadsheet = require("../lib/spreadsheet.js").Spreadsheet;
 
-var filename = path.join(__dirname, 'test.csv');
+var filename = path.join(__dirname, 'spreadsheet.csv');
 
 describe('Spreadsheet', function() {
     describe('#__constructor', function() {
