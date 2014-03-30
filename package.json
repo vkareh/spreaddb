@@ -20,7 +20,8 @@
     "url": "http://github.com/vkareh/spreaddb.git"
   },
   "scripts": {
-    "start": "node spreaddb.js"
+    "start": "node spreaddb.js",
+    "test": "mocha"
   },
   "dependencies": {
     "csv": "0.3.x",
