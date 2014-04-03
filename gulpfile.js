@@ -4,7 +4,7 @@ var mocha = require('gulp-mocha');
 
 var paths = {
   js: ['spreaddb.js', 'lib/**/*.js'],
-  test: ['test/*.test.js']
+  test: ['test/*.js']
 };
 
 gulp.task('lint', function() {
