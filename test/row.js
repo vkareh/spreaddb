@@ -1,13 +1,17 @@
-var expect = require("chai").expect;
-var Spreadsheet = require("../lib/spreadsheet.js");
-var Row = require("../lib/row.js");
-
-var filename = 'rows.csv';
+var expect = require('chai').expect;
+var Spreadsheet = require('../lib/spreadsheet.js');
+var Row = require('../lib/row.js');
+var fs = require('fs');
+var filename = 'row.test.csv';
 var spreadsheet;
 
 describe('Row', function() {
-  before(function() {
+  before(function(done) {
     spreadsheet = new Spreadsheet({filename: filename});
+    spreadsheet.create(function(err) {
+      if (err) return done(err);
+      done();
+    });
   });
 
   describe('#__constructor', function() {
@@ -83,6 +87,6 @@ describe('Row', function() {
   });
 
   after(function() {
-    require('fs').unlink(require('path').join(__dirname, filename));
+    fs.unlinkSync('./test/row.test.csv');
   });
 });

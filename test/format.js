@@ -1,7 +1,8 @@
-var expect = require("chai").expect;
-var Format = require("../lib/format.js");
+var expect = require('chai').expect;
+var fs = require('fs');
+var Format = require('../lib/format.js');
 
-var filename = 'format.csv';
+var filename = 'format.test.csv';
 var format;
 
 describe('Format', function() {
@@ -85,6 +86,6 @@ describe('Format', function() {
   });
 
   after(function() {
-    require('fs').unlink(require('path').join(__dirname, filename));
+    fs.unlinkSync('./test/format.test.csv');
   });
 });

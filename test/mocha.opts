@@ -1,1 +1,2 @@
+--require ./lib/config.js
 --reporter spec

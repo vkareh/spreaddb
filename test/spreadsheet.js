@@ -4,7 +4,7 @@ var path = require('path');
 var Spreadsheet = require('../lib/spreadsheet');
 var Format = require('../lib/format');
 
-var filename = 'spreadsheet.csv';
+var filename = 'spreadsheet.test.csv';
 var spreadsheet;
 
 describe('Spreadsheet', function() {
