@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var istanbul = require('gulp-istanbul');
 var jshint = require('gulp-jshint');
 var mocha = require('gulp-mocha');
 
@@ -13,10 +14,16 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter('default'));
 });
 
-gulp.task('test', function () {
-  gulp.src(paths.test)
-    .pipe(mocha({reporter: 'spec'}))
-    .on('error', function() {});
+gulp.task('test', function (done) {
+  gulp.src(paths.js)
+    .pipe(istanbul())
+    .on('finish', function() {
+      gulp.src(paths.test)
+        .pipe(mocha({reporter: 'spec'}))
+        .pipe(istanbul.writeReports())
+        .on('error', function() {})
+        .on('end', done);
+    });
 });
 
 gulp.task('watch', function() {
